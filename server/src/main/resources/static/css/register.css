@@ -1,0 +1,41 @@
+#greeting.active {
+    pointer-events: stroke;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+#greeting .context {
+    position: absolute;
+    width: 450px;
+    top: calc(50% - 200px);
+    left: calc(50% - 225px);
+    text-align: center;
+}
+
+#greeting .registration {
+    position: absolute;
+    left: calc(50% - 165px);
+    background-color: #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+#greeting .title {
+    margin-bottom: 10px;
+    font-size: 80px;
+    color: white;
+}
+
+#greeting #start-button {
+    width: 100%;
+    height: 50px;
+}
+
+#start-button.loading > label {
+    display: none;
+}

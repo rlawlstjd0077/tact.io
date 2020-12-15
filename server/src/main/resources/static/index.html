@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tact.io</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    <link rel="stylesheet" href="/css/tact.css">
+    <link rel="stylesheet" href="/css/register.css">
+
+    <script src = "/webjars/jquery/jquery.min.js"></script>
+    <script src = "/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src = "/webjars/stomp-websocket/stomp.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+
+<body>
+    <div class="ui">
+        <div id="object-blocker"></div>
+        <div id="greeting">
+            <div class="container">
+                <div class="context">
+                    <h1 class="title">
+                        <label>Tact.io</label>
+                    </h1>
+                    <div class="registration">
+                        <div id="user-name-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="user-name">
+                            <label class="mdl-textfield__label" for="user-name">Your Name</label>
+                        </div>
+                        <button onclick="startSearchingRoom()" id="start-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            <label>Start</label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loading">
+            <div class="container">
+                <label id="loading-label">Entering available session...</label>
+            </div>
+        </div>
+        <div id="waiting">
+            <div class="container">
+                <label id="waiting-label">Waiting for new challengers...</label>
+            </div>
+        </div>
+        <div id="game-ui">
+            <div class="right-top">
+                <div class="rank-container">
+                    <table id="rank-table"></table>
+                </div>
+                <div>
+                    <div class="label-container time-indicator">
+                        TIME : <label class="inner-label">00</label>
+                    </div>
+                </div>
+            </div>
+            <div class="round-result-container lose">
+                <label class="title">Game Over</label>
+                <div class="context">
+                    <div class="info-set">
+                        <label class="info-header">Score</label> <br>
+                        <label class="info-value" id="lose-score"></label>
+                    </div>
+                    <div class="info-set">
+                        <label class="info-header">Survived Rounds</label> <br>
+                        <label class="info-value" id="lose-rounds"></label>
+                    </div>
+                    <div class="bottom-container">
+                        <button type="button" id="retry-button" onclick="connect()">Continue</button>
+                    </div>
+                </div>
+            </div>
+            <div class="round-result-container survived">
+                <label class="title">Round Result</label>
+                <div class="context">
+                    <div class="info-set">
+                        <label class="info-header">Round Score</label> <br>
+                        <label class="info-value" id="survived-score"></label>
+                    </div>
+                    <div class="info-set">
+                        <label class= "info-header">Total Score</label> <br>
+                        <label class="info-value" id="survived-total"></label>
+                    </div>
+                    <div class="bottom-container">
+                        <label id="close-label">Waiting for next round... (<label id="close-count"></label>)</label>
+                    </div>
+                </div>
+            </div>
+            <div id="count-container">
+                <label id="count-label"></label>
+            </div>
+        </div>
+    </div>
+    <script src="https://pixijs.download/v4.8.7/pixi.min.js"></script>
+    <script src="https://pixijs.download/v4.8.7/pixi.min.js.map"></script>
+    <script src="/lib/pixi-filters.js"></script>
+    <script src="/js/tile.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/router.js"></script>
+    <script src="/js/socket.js"></script>
+</body>
+
+</html>

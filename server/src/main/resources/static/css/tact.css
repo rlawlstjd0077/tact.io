@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.ui {
+    pointer-events: none;
+}
+
+.ui, #game-ui, #greeting, #loading, #waiting, #object-blocker {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ui > div {
+    display: none;
+}
+
+.ui > div.active {
+    display: block;
+}
+
+.right-top {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+#object-blocker {
+    display: none;
+    pointer-events: fill;
+}
+
+#object-blocker.active {
+    display: block;
+}
+
+#loading-label, #waiting-label {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    line-height: 100%;
+    color: white;
+}
+
+.rank-container {
+    padding: 3px;
+    margin-bottom: 3px;
+    width: 300px;
+    border-radius: 3px;
+    background: rgba(200, 200, 200, 0.5);
+}
+
+.rank-container table {
+    width: 100%;
+    padding: 10px;
+}
+
+.rank-container table td {
+    font-size: 20px;
+    text-align: left;
+    padding: 0.5rem 1rem;
+}
+
+.rank-container table tr > td:first-child,
+.rank-container table tr > td:last-child {
+    width: 2.5rem;
+}
+
+.rank-container table tr > td:last-child {
+    max-width: 8rem;
+    text-align: right;
+}
+
+.right-top > div:not(.rank-container) {
+    padding: 3px 0;
+    text-align: right;
+}
+
+.round-result-container {
+    visibility: hidden;
+    width: 500px;
+    position: absolute;
+    left: calc(50% - 250px);
+    top: calc(50% - 375px);
+    pointer-events: stroke;
+    text-align: center;
+    opacity: 0;
+    transition: visibility 0s, opacity 1s;
+}
+
+.round-result-container > .context {
+    width: 100%;
+    margin-top: 10px;
+    background: rgba(200, 200, 200, 0.9);
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+.round-result-container > .title {
+    font-size: 48px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.round-result-container.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.round-result-container .bottom-container #close-label {
+    font-size: 24px;
+}
+
+.info-set {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info-set > .info-header {
+    font-weight: bold;
+}
+
+.label-container {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: rgba(150, 150, 150, 0.5);
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+#count-container {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: calc(50% - 50px);
+    top: calc(50% - 100px);
+    text-align: center;
+}
+#count-container.active {
+    display: block;
+}
+
+#count-label {
+    font-size: 200px;
+    font-weight: bold;
+    color: white;
+    opacity: 0.8;
+    line-height: 100%;
+}
+
+#retry-button {
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 3px;
+}

@@ -1,0 +1,153 @@
+swagger: '2.0'
+info:
+  description: >-
+    This is a sample incredible game!   
+  version: 1.0.0
+  title: tact.io
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: petstore.swagger.io
+basePath: /v2
+tags:
+  - name: enter
+    description: Enter GamePool
+  - name: click
+    description: Send click info (To WebSocket)
+schemes:
+  - http
+paths:
+  /api/enter:
+    put:
+      tags:
+        - enter
+      summary: Enter a new game poll
+      parameters:
+        - in: body
+          name: body
+          description: user Name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+  /api/session:
+    get:
+      tags:
+        - enter
+      summary: Get own session id
+      responses:
+        '200':
+          description: successful operation (return sessionID)
+          schema:
+            type: string
+  /click:
+    post:
+      tags:
+        - click
+      summary: Send click info
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/ClickInfo'
+      responses:
+        200:
+          description: OK
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
+    flow: implicit
+    scopes:
+      'write:pets': modify pets in your account
+      'read:pets': read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  ClickInfo:
+    type: object
+    properties:
+      poolId:
+        type: integer
+      spot:
+        type: integer
+      
+  SocketMessage:
+    type: object
+    properties:
+      header:
+        type: string
+        description: Header Message
+        enum:
+          - WAIT_MESSAGE (no body)
+          - POOL_ID
+          - COUNT_DOWN
+          - MAP_DATA
+          - USER_GAME_RESULT
+      body:
+        type: object
+        description: Socket Body Object (Described in detail below)
+  CoundDown(Socket Body):
+    type: object
+    properties:
+      count:
+        type: integer
+      countCase:
+        type: string
+        description: CountDown Case
+        enum:
+          - BEFORE_GAME
+          - IN_GAME
+          - AFTER_GAME
+  MapData(Socket Body):
+    type: object
+    properties:
+      spotList:
+        type: array
+        items:
+          type: integer
+      rankingList:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            score:
+              type: integer
+            sessionId:
+              type: string
+            
+  UserGameResult(Socket Body):
+    type: object
+    properties:
+      isAlive:
+        type: boolean
+      score:
+        type: integer
+      aliveSpots:
+        type: array
+        items:
+          type: integer
+      deadSpots:
+        type: array
+        items:
+          type: integer
+  PoolId(Socket Body):
+    type: object
+    properties:
+      poolId:
+        type: integer
+
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
