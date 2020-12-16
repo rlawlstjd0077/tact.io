@@ -1,4 +1,4 @@
-package com.tact.io;
+package com.tact.io.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
