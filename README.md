@@ -16,8 +16,7 @@ simple timing game on the web
 - Front-end: HTML, CSS, JavaScript(Socket.io, PixiJS)
 
 ## 4. 결과물
-
-<iframe src="https://streamable.com/e/yh5w2v" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe>
+![video](https://streamable.com/e/yh5w2v)
 
 ![1](https://github.com/rlawlstjd0077/tact.io/blob/main/images/1.png)
 ![2](https://github.com/rlawlstjd0077/tact.io/blob/main/images/2.png)
